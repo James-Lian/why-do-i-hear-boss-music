@@ -27,7 +27,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          James' Github
+          James&apos; Github
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
@@ -42,7 +42,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Andrew's LinkedIn
+          Andrew&apos;s LinkedIn
         </a>
       </footer>
     </div>

@@ -44,8 +44,8 @@ export default function SpeechToText() {
         let res = await fetch(url);
         let data = await res.json();
 
-        var punctuationless = JSON.stringify(data[0]).replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]""/g,"");
-        var finalString = punctuationless.replace(/\s{2,}""/g," ");
+        var punctuationless = JSON.stringify(data[0]).replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+        var finalString = punctuationless.replace(/\s{2,}/g," ");
         if (Array.from(finalString)[1].toLowerCase() == "y") {
             let choice = Math.floor(Math.random() * 2);
             setMood("🔥🔥")
