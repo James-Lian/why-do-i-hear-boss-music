@@ -1,5 +1,3 @@
-![an image of the project](https://github.com/James-Lian/why-do-i-hear-boss-music/blob/main/demo.png)
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

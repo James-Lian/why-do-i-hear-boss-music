@@ -30,7 +30,7 @@ export default function SpeechToText() {
     const [transcript, setTranscript] = useState("");
     const [isListening, setIsListening] = useState(false);
 
-    const [mood, setMood] = useState(" ")
+    const [mood, setMood] = useState("...")
     
     let recognition;
 
@@ -214,8 +214,8 @@ export default function SpeechToText() {
             />
         }
         </button>
-        <div className="text-center">
-            <h3 className="text-lg mb-10 italic">{mood}</h3>
+        <div className="text-center p-6px">
+            <h3 className="text-lg mb-8 italic">{mood}</h3>
         </div>
         <audio className="hidden" ref={refs['Animals']} src="/Animals.mp3"/>
         <audio className="hidden" ref={refs['Astomania']} src="/Astromania.mp3"/>
