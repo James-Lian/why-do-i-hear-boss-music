@@ -29,6 +29,8 @@ export default function SpeechToText() {
 
     const [transcript, setTranscript] = useState("");
     const [isListening, setIsListening] = useState(false);
+    
+    const [songName, setSongName] = useState("...")
 
     const [mood, setMood] = useState("...")
     
@@ -53,10 +55,12 @@ export default function SpeechToText() {
                 refs[currently_playing].current.pause()
                 currently_playing = "BACK2BACK";
                 refs[currently_playing].current.play();
+                setSongName(currently_playing)
             } else {
                 refs[currently_playing].current.pause()
                 currently_playing = "NUNCAMUDA";
                 refs[currently_playing].current.play();
+                setSongName(currently_playing)
             }
         } else {
             prompt = "Answer only with 1, 2, or 3. Answer 1 if the following statement is an exclamation (like 'Oh shoot' or 'Oh My God'), answer 2 if the following statement is apprehensive (e.g. I have a test tomorrow). Answer 3 if neither of the previous statements apply. " + text
@@ -73,11 +77,13 @@ export default function SpeechToText() {
                 refs[currently_playing].current.pause()
                 currently_playing = "FinalFant";
                 refs[currently_playing].current.play();
+                setSongName("One-Winged Angel")
             } else if (Array.from(finalString)[0] == "2") {
                 setMood('Uh oh')
                 refs[currently_playing].current.pause()
                 currently_playing = "TimeBackBadPiano";
                 refs[currently_playing].current.play();
+                setSongName("Time Back - Bad")
             } else {
                 var sentiment = new Sentiment()
                 var result = sentiment.analyze(text);
@@ -89,14 +95,17 @@ export default function SpeechToText() {
                         refs[currently_playing].current.pause();
                         currently_playing = "LebronSunshine";
                         refs[currently_playing].current.play(); // you are my sunshine or FE!N or animals
+                        setSongName("Lebron Glazing :D")
                     } else if (choice == 1) {
                         refs[currently_playing].current.pause();
                         currently_playing = "FEIN";
                         refs[currently_playing].current.play();
+                        setSongName("FE!N")
                     } else if (choice == 2) {
                         refs[currently_playing].current.pause()
                         currently_playing = "Animals";
                         refs[currently_playing].current.play();
+                        setSongName("Animals")
                     }
                 } else if (result.score < 6 && result.score > 2) {
                     let choice = Math.floor(Math.random() * 2);
@@ -104,10 +113,12 @@ export default function SpeechToText() {
                         refs[currently_playing].current.pause(); // Dragostea or rick roll
                         currently_playing = "Dragostea";
                         refs[currently_playing].current.play();
+                        setSongName("Dragostea")
                     } else {
                         refs[currently_playing].current.pause();
                         currently_playing = "Rickroll";
                         refs[currently_playing].current.play();
+                        setSongName("Never Gonna Give You Up")
                     }
                 } else if (result.score <= 2 && result.score >= -2) {
                     setMood("Sounds like you're feeling pretty meh")
@@ -116,10 +127,12 @@ export default function SpeechToText() {
                         refs[currently_playing].current.pause();
                         currently_playing = "BagRaidersShooting";
                         refs[currently_playing].current.play();
+                        setSongName("Shooting Stars")
                     } else {
                         refs[currently_playing].current.pause();
                         currently_playing = "ChillGuy";
                         refs[currently_playing].current.play();
+                        setSongName("Chill guy")
                     }
                     // shooting stars or chill guy
                 } else if (result.score < -2 && result.score > -6) {
@@ -129,10 +142,12 @@ export default function SpeechToText() {
                         refs[currently_playing].current.pause();
                         currently_playing = "TamarBraxtonLetMeKnow";
                         refs[currently_playing].current.play();
+                        setSongName("Let Me Know")
                     } else {
                         refs[currently_playing].current.pause();
                         currently_playing = "VitasThe7thElement";
                         refs[currently_playing].current.play();
+                        setSongName("Vitas the 7th Element")
                     }
                     // Let me know, vitas                                
                         refs[currently_playing].current.play();
@@ -141,6 +156,7 @@ export default function SpeechToText() {
                     refs[currently_playing].current.pause();
                     currently_playing = "Astomania";
                     refs[currently_playing].current.play();
+                    setSongName("Astromania")
                 }
                 // what was I made for, coffin dancers
             }
@@ -217,6 +233,7 @@ export default function SpeechToText() {
         <div className="text-center p-6px">
             <h3 className="text-lg mb-8 italic">{mood}</h3>
         </div>
+        <div className="absolute right-[-10px] top-[10%] min-w-28 py-4 min-h-8 rounded-[8px] bg-gray-800 italic text-white inline-block">🎵{songName}🎶</div>
         <audio className="hidden" ref={refs['Animals']} src="/Animals.mp3"/>
         <audio className="hidden" ref={refs['Astomania']} src="/Astromania.mp3"/>
         <audio className="hidden" ref={refs['BACK2BACK']} src="/BACK2BACK.mp3"/>
