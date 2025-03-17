@@ -233,7 +233,7 @@ export default function SpeechToText() {
         <div className="text-center p-6px">
             <h3 className="text-lg mb-8 italic">{mood}</h3>
         </div>
-        <div className="absolute right-[-10px] top-[10%] min-w-28 py-4 min-h-8 rounded-[8px] bg-gray-800 italic text-white inline-block">🎵{songName}🎶</div>
+        <div className="absolute right-[-10px] top-[10%] min-w-28 py-4 min-h-8 rounded-[8px] bg-gray-800 italic text-white inline-block">🎧{songName}</div>
         <audio className="hidden" ref={refs['Animals']} src="/Animals.mp3"/>
         <audio className="hidden" ref={refs['Astomania']} src="/Astromania.mp3"/>
         <audio className="hidden" ref={refs['BACK2BACK']} src="/BACK2BACK.mp3"/>
